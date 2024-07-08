@@ -1,0 +1,33 @@
+{
+  "name": "@morgana/components",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "> TODO: description",
+  "author": "chensir725 <1084983891@qq.com>",
+  "homepage": "https://github.com/lxyqmc1529/monica#readme",
+  "license": "ISC",
+  "main": "src/index.ts",
+  "directories": {
+    "lib": "src"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://mirrors.cloud.tencent.com/npm/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lxyqmc1529/monica.git"
+  },
+  "scripts": {
+    "test": "node ./__tests__/@morgana/components.test.js"
+  },
+  "bugs": {
+    "url": "https://github.com/lxyqmc1529/monica/issues"
+  },
+  "dependencies": {
+    "antd": "^5.19.1",
+    "react": "^18.3.1"
+  }
+}
