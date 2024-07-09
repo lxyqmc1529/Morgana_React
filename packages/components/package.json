@@ -6,7 +6,7 @@
   "author": "chensir725 <1084983891@qq.com>",
   "homepage": "https://github.com/lxyqmc1529/monica#readme",
   "license": "ISC",
-  "main": "src/index.ts",
+  "main": "./src/index.ts",
   "directories": {
     "lib": "src"
   },
