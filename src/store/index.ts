@@ -1,6 +1,10 @@
 import {configureStore} from '@reduxjs/toolkit';
-import combineReducers from './componentReducer';
+import combineReducers, {ComponentStateType} from './componentReducer';
 
+
+export interface StateType {
+  component: ComponentStateType;
+}
 export default configureStore({
   reducer: {
     component:combineReducers

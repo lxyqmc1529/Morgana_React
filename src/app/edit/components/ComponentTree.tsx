@@ -4,16 +4,16 @@ import { Tabs } from "antd";
 import { useDispatch } from "react-redux";
 import { addComponent } from "@/store/componentReducer";
 import { nanoid } from "nanoid";
-
+import ShemaParser from '@/lib/shemaParser'
 function ComponentList({components}:{components:ComponentInfo[]}){
   const dispatch = useDispatch()
   const dispatchAddComponent = (component:ComponentInfo) => {
-    const { type ,name} = component.meta
+    const { type ,name, dataForm } = component.meta
     dispatch(addComponent({
       id:nanoid(),
       type,
       name,
-      props:{},
+      props:dataForm ? ShemaParser.parse(dataForm) : {},
     }))
   };
   return <div>{

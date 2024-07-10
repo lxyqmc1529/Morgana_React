@@ -14,5 +14,22 @@ export default{
       title:'占位符',
       default:'请输入内容',
     },
+    object:{
+      type:'object',
+      title:'对象',
+      properties:{
+        name:{
+          type:'string',
+          title:'名称',
+          default:'字段名称'
+        },
+        age:{
+          type:'number',
+          title:'年龄',
+          default:18
+        }
+        }
+      }
+    
   }
 }

@@ -3,18 +3,16 @@ import { Form, Input, Select } from 'antd';
 import { componentGroups } from "@morgana/components";
 import { ComponentInfo } from "@morgana/components";
 
+
 // 创建上下文
-export const FormDataContext = createContext<{ formData: any; setformData: (data: any) => void }>({
-  formData: {},
-  setformData: () => {},
-});
+export const FormDataContext = createContext<{ formData: any; setformData: (data: any) => void } | null>(null);
 
 export default function ConfigForm() {
   const [formData, setformData] = useState({});
 
   const titleConfig = componentGroups[0];
   const mataConfig = titleConfig.children[0].meta.dataForm;
-
+  console.log(mataConfig)
   const formItems = Object.entries(mataConfig as ComponentInfo).map(([key, config]) => {
     if (!config.type) {
       console.warn(`No component found for type: ${config.type}`);
@@ -47,9 +45,14 @@ export default function ConfigForm() {
     );
   });
 
+  useEffect(() => {
+    setformData({name: 'liuxinyu'})
+  }, [])
+
   return (
     <FormDataContext.Provider value={{ formData, setformData }}>
       <div className="w-full h-full bg-slate-200">
+        {JSON.stringify(formData)}
         <Form layout="vertical" title={titleConfig.name}>
           {formItems}
         </Form>

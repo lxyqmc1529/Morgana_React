@@ -2,7 +2,7 @@
 import { createSlice,type PayloadAction } from '@reduxjs/toolkit';
 import { Immer, produce } from 'immer';
 
-interface ComponentInfoType {
+export interface ComponentInfoType {
   id: string,
   name: string,
   type: string,
