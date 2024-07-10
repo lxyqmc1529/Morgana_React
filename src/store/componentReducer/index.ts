@@ -28,9 +28,12 @@ export const componentsSlice = createSlice({
     },
     addComponent:produce((draft:ComponentStateType, action:PayloadAction<ComponentInfoType>) => {
       draft.components.push(action.payload);
-    })
+    }),
+    selectComponent: produce((draft:ComponentStateType, action:PayloadAction<string>) => {
+      draft.selectedId = action.payload;
+    }),
   }
 });
 
-export const { resetComponentState,addComponent} = componentsSlice.actions;
+export const { resetComponentState,addComponent,selectComponent } = componentsSlice.actions;
 export default componentsSlice.reducer;
