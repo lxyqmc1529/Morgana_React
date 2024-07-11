@@ -8,14 +8,14 @@ interface PropsType{
 }
 export default function SortableContainer(props:PropsType) {
   const { children, items, onDragEnd } = props;
-  const sensors = useSensors(useSensor(MouseSensor),{
+  const sensors = useSensors(useSensor(MouseSensor,{
     activationConstraint: {
       distance: 8,
     }
-  });
+  }))
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
-    if(over){
+    if(!over){
       return 
     }
     if(active.id !== over.id){
@@ -24,7 +24,8 @@ export default function SortableContainer(props:PropsType) {
       onDragEnd(oldIndex, newIndex);
     }
   }
-  return <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={onDragEnd}>
+  
+  return <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
     <SortableContext items={items} strategy={verticalListSortingStrategy}>
       {children}
     </SortableContext>

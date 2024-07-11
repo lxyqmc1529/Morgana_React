@@ -8,7 +8,7 @@ import ShemaParser from '@/lib/shemaParser'
 function ComponentList({components}:{components:ComponentInfo[]}){
   const dispatch = useDispatch()
   const dispatchAddComponent = (component:ComponentInfo) => {
-    const { type ,name, dataForm } = component.meta
+    const { type ,name, dataForm } = component.meta 
     dispatch(addComponent({
       id:nanoid(),
       type,

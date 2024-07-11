@@ -1,4 +1,5 @@
 
+import { arrayMove } from '@dnd-kit/sortable';
 import { createSlice,type PayloadAction } from '@reduxjs/toolkit';
 import { Immer, produce } from 'immer';
 
@@ -32,8 +33,13 @@ export const componentsSlice = createSlice({
     selectComponent: produce((draft:ComponentStateType, action:PayloadAction<string>) => {
       draft.selectedId = action.payload;
     }),
+    moveComoment:produce((draft:ComponentStateType, action:PayloadAction<{fromIndex:number,toIndex:number}>)=>{
+      const {oldIndex,newIndex} = action.payload;
+      const components = draft.components;
+      draft.components = arrayMove(components,oldIndex,newIndex)
+    })
   }
 });
 
-export const { resetComponentState,addComponent,selectComponent } = componentsSlice.actions;
+export const { resetComponentState,addComponent,selectComponent,moveComoment } = componentsSlice.actions;
 export default componentsSlice.reducer;

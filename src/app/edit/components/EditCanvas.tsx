@@ -1,9 +1,9 @@
 import useGetComponentsInfo from "@/hooks/useGetComponentsInfo";
-import { ComponentInfoType, selectComponent } from "@/store/componentReducer";
+import { ComponentInfoType, moveComoment, selectComponent } from "@/store/componentReducer";
 import { getComponentByType } from "@morgana/components";
 import clsx from "clsx";
 import SortableContainer from "@/components/feature/DragSortable/SortableContainer";
-import { SortableItem } from "@/components/feature/DragSortable/SortableItem";
+import SortableItem from "@/components/feature/DragSortable/SortableItem";
 import { useDispatch } from "react-redux";
 function genComponent(component:ComponentInfoType) {
     const Component = getComponentByType(component.type);
@@ -17,8 +17,12 @@ export default function EditCanvas() {
     const selectComponentHandler = (id:string) => {
         dispatch(selectComponent(id));
     }
+    const handleDragEnd = (oldIndex:number, newIndex:number) => {
+        dispatch(moveComoment({oldIndex, newIndex}))
+    }
     return (
         <div className="edit-canvas w-[375px] h-[712px] bg-white shadow-md">
+            <SortableContainer items={components} onDragEnd={handleDragEnd}>
             {components.map((component) =>{
                 const wrapperDefaultClass = "border border-dashed p-3 rounded-sm";
                 const selectClass = 'border-cyan-600 hover:border-cyan-600';
@@ -27,12 +31,16 @@ export default function EditCanvas() {
                     [selectClass]: component.id === selectedId,
                     [defaultClass]: component.id!== selectedId
                 })
-                return (<div className={wrapperClassName} onClick={() => selectComponentHandler(component.id)}>
+                return (<SortableItem id={component.id} key={component.id}>
+                    <div className={wrapperClassName} onClick={() => selectComponentHandler(component.id)}>
                     <div className="select-none pointer-events-none outline-none">
                     {genComponent(component)}
                     </div>
-                   </div>)
+                   </div>
+                </SortableItem>)
             } )}
+            </SortableContainer>
+           
         </div>
     )
 }
