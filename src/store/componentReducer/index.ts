@@ -37,9 +37,19 @@ export const componentsSlice = createSlice({
       const {oldIndex,newIndex} = action.payload;
       const components = draft.components;
       draft.components = arrayMove(components,oldIndex,newIndex)
+    }),
+    changeProps:produce((draft:ComponentStateType, action:PayloadAction<{id:string,props:Record<string,any>}>) => {
+      const { id,props} = action.payload;
+      const components = draft.components.find(c => c.id === id);
+      if(components){
+        components.props = {
+          ...components.props,
+         ...props
+        }
+      }
     })
-  }
-});
+      
+}});
 
-export const { resetComponentState,addComponent,selectComponent,moveComoment } = componentsSlice.actions;
+export const { resetComponentState,addComponent,selectComponent,moveComoment,changeProps } = componentsSlice.actions;
 export default componentsSlice.reducer;

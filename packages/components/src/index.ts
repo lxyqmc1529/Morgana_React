@@ -15,3 +15,7 @@ export function getComponentByType(type:string){
   if(!componentInfo) return null;
   return componentInfo.component;
 }
+
+export function getComponentInfoByType(type:string){
+  return componentMap[type];
+}

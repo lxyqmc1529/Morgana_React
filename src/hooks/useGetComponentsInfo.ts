@@ -6,5 +6,6 @@ export default function useGetComponentsInfo() {
   //从state中获取component数据
   const componentState = useSelector<StateType>((state) => state.component) as ComponentStateType;
   const { selectedId, components } = componentState;
-  return { selectedId, components };
+  const selectedComponent = components.find((component) => component.id === selectedId);
+  return { selectedId, components, selectedComponent };
 }

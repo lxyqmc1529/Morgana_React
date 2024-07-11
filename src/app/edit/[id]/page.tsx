@@ -1,7 +1,7 @@
 'use client'
 import EditLeftPanel from "../components/EditLeftPanel"
 import EditCanvas from "../components/EditCanvas";
-import ConfigForm from "../components/ConfigForm";
+import RightPanel from "../components/EditRightPanel";
 export default function EditPage({parmas} :{parmas:{id:string}}) {
 
   return <div className="w-full h-full">
@@ -15,7 +15,7 @@ export default function EditPage({parmas} :{parmas:{id:string}}) {
         </main> 
       <section className="w-[330px]  bg-white shadow-md py-4">
         <div className="">
-          <ConfigForm />
+          <RightPanel />
         </div>
       </section>
     </div>
