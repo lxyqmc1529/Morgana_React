@@ -4,6 +4,7 @@ import { Component } from "lucide-react";
 import ComponentTree from "./ComponentTree";
 import PropsSetter from "./PropsSetter";
 
+
 const rightPanel = [
   {
     label:"数据",
@@ -11,9 +12,10 @@ const rightPanel = [
     children:<PropsSetter/>
   }
 ]
+console.log('right',rightPanel)
 export default function EditRightPanel() {
 
   return (
-    <Tabs type="card" size="small"className="w-full h-full" items={rightPanel}></Tabs>
+    <Tabs type="card" size="small"className="w-full h-full border" items={rightPanel}></Tabs>
     );
 }

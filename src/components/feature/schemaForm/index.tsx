@@ -2,7 +2,7 @@
 import { FormSchema } from '@/typings/schema';
 import SchemaFormItem from './forms/FormItem';
 import React, { useEffect } from'react';
-import {Form} from 'antd';
+import { Form } from 'antd';
 interface SchemaFormProps {
   value:Record<string,any>;
   schema:Record<string,FormSchema>;
@@ -24,9 +24,8 @@ export default function SchemaForm(props:SchemaFormProps) {
   labelAlign='left'
   labelCol={{span:8}}
   size="small"
-  onValuesChange={formChange}
   >
     {
-      Object.entries(schema).map(([key,item]) =><SchemaFormItem key={key} name={key} schema={value} /> )}
+      Object.entries(schema).map(([key,value]) =><SchemaFormItem key={key} name={key} schema={value} /> )}
   </Form>
 }

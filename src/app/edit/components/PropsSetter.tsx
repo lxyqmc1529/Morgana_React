@@ -7,7 +7,7 @@ import { changeProps } from "@/store/componentReducer";
 //一个面向props的表单生成器
 export default function PropsSetter(props: any) {
   const { selectedComponent,selectedId } = useGetComponentsInfo();
-  const disatch = useDispatch();
+  const dispatch = useDispatch();
   if (!selectedComponent) {
     return <Empty description="请先选择一个组件" />;
   }
@@ -17,7 +17,7 @@ export default function PropsSetter(props: any) {
     return <Empty description="该组件没有可配置的属性" />;
   }
   const propsValuesChange = (values:Record<string, any>) => {
-    disatch(changeProps({id:selectedId,props:values}))
+    dispatch(changeProps({id:selectedId,props:values}))
   }
   return (
     <div>
