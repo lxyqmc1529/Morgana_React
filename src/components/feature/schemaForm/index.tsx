@@ -6,7 +6,7 @@ import { Form } from 'antd';
 interface SchemaFormProps {
   value:Record<string,any>;
   schema:Record<string,FormSchema>;
-  onChange:(value:Record<string,any>)=>void;
+  onChange?:(value:Record<string,any>)=>void;
 }
 export default function SchemaForm(props:SchemaFormProps) {
   const {value,schema,onChange} = props;
@@ -15,7 +15,7 @@ export default function SchemaForm(props:SchemaFormProps) {
     form.setFieldsValue(value);
   },[value])
   const formChange = (changedValue:Record<string,any>,values:Record<string,any>) => {
-    onChange(values);
+    onChange?.(values);
   }
   return <Form initialValues={value}
   onValuesChange={formChange}

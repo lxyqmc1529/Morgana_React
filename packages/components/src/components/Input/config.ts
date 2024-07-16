@@ -29,7 +29,23 @@ export default{
           default:18
         }
         }
-      }
+      },
+      array:{
+        type:'array',
+        title:'数组',
+        items:{
+          name:{
+            type:'string',
+            title:'名称',
+            default:'字段名称'
+          },
+          age:{
+            type:'number',
+            title:'年龄',
+            default:18
+          }
+          }
+        }
     
   }
 }

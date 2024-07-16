@@ -11,6 +11,7 @@ export interface ComponentInfoType {
   isHidden: boolean,
   isLocked: boolean,
   style:Record<string, any>,
+  commonStyle:Record<string, any>,
 }
 export interface ComponentStateType {
   selectedId: string,

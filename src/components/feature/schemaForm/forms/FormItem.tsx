@@ -8,10 +8,10 @@ export default function FormItem(props: {name:NamePath,schema:FormSchema}) {
   if (!FormComponent) {
     return null
   }
-
+  const noShowLabelKey = ['object','array']
   return (
-    <Form.Item label={schema.title} name={name} rules={schema['x-rules']}>
+    <Form.Item label={noShowLabelKey.includes(schema.type)? null : schema.title} name={name} rules={schema['x-rules']}>
       <FormComponent schema={schema} name={name} />
     </Form.Item>
   );
-}
+} 

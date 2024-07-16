@@ -1,3 +1,4 @@
+import React from "react";
 import { ComponentGroup } from "../constants";
 
 export interface CommonProps{
@@ -12,5 +13,6 @@ export interface ComponentInfo{
     type:string;
     group:ComponentGroup;
     dataForm?:Record<string,any>;
+    commonStyle?:Record<any,any>;
   }
 }
